@@ -23,9 +23,7 @@ node {
   try {
       notifySlack()
        stage('Build') {
-              steps {
-                        sh 'npm install'
-                        }
+            sh 'npm install'
           }
        stage('Test') {
 
