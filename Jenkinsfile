@@ -19,19 +19,25 @@ def notifySlack(String buildStatus = 'STARTED') {
 }
 
 node {
-
-  // job
   try {
-          notifySlack()
-    stage('build') {
-      println('so far so good...')
-    }
-    stage('test') {
-      println('A test has failed!')
-      sh 'exit 1'
-    }
+      notifySlack()
+       stage('Build') {
+              steps {
+                  echo 'Building..'
+              }
+          }
+          stage('Test') {
+              steps {
+                  echo 'Testing..'
+              }
+          }
+          stage('Deploy') {
+              steps {
+                  echo 'Deploying....'
+              }
+          }
+
   } catch(e) {
-    // mark build as failed
     currentBuild.result = "FAILURE";
     throw e;
   } finally {
