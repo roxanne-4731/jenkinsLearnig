@@ -22,11 +22,15 @@ node {
     def dockerContainerName = "react_app"
   try {
       notifySlack()
+        stage('Preparation') {
+                checkout scm
+                }
        stage('Build') {
-            sh 'npm install'
-          }
-       stage('Test') {
-
+       // name of created Nodejs in Global Tool Configuration
+          nodejs(nodeJSInstallationName: 'nodejs') {
+              sh 'npm install'
+              sh 'npm start'
+            }
           }
        stage('Deploy') {
 
