@@ -13,8 +13,7 @@ def notifySlack(String buildStatus = 'STARTED') {
         color = '#FF9FA1'
     }
 
-    def msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL} in
-    ${Util.getTimeSpanString(System.currentTimeMillis() - currentBuild.startTimeInMillis)}"
+    def msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL} in ${Util.getTimeSpanString(System.currentTimeMillis() - currentBuild.startTimeInMillis)}"
 
     slackSend(color: color, message: msg)
 }
