@@ -35,6 +35,6 @@ node {
     currentBuild.result = "FAILURE";
     throw e;
   } finally {
-        notifySlack()
+        notifySlack(currentBuild.result)
   }
 }
