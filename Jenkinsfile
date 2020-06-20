@@ -19,10 +19,13 @@ def notifySlack(String buildStatus = 'STARTED') {
 }
 
 node {
+    def dockerContainerName = "react_app"
   try {
       notifySlack()
        stage('Build') {
-            sh 'npm install && npm run start'
+              steps {
+                        sh 'npm install'
+                        }
           }
        stage('Test') {
 
