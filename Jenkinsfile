@@ -22,19 +22,13 @@ node {
   try {
       notifySlack()
        stage('Build') {
-              steps {
-                  echo 'Building..'
-              }
+            sh 'npm install && npm run start'
           }
-          stage('Test') {
-              steps {
-                  echo 'Testing..'
-              }
+       stage('Test') {
+
           }
-          stage('Deploy') {
-              steps {
-                  echo 'Deploying....'
-              }
+       stage('Deploy') {
+
           }
 
   } catch(e) {
